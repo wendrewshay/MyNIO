@@ -63,6 +63,6 @@ public class AsyncClientHandler implements CompletionHandler<Void, AsyncClientHa
         writeBuffer.put(req);  
         writeBuffer.flip();  
         //异步写  
-        clientChannel.write(writeBuffer, writeBuffer,new WriteHandler(clientChannel, latch));  
+        clientChannel.write(writeBuffer, writeBuffer,new ClientWriteHandler(clientChannel, latch));  
     }  
 }  

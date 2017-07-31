@@ -1,5 +1,8 @@
 package aio;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.FileReader;
 import java.util.Scanner;  
 /** 
  * 测试方法 
@@ -17,7 +20,14 @@ public class Test {
         //运行客户端   
         Client.start();  
         System.out.println("请输入请求消息：");  
-        Scanner scanner = new Scanner(System.in);  
-        while(Client.sendMsg(scanner.nextLine()));  
+        
+        BufferedReader bufferedReader = new BufferedReader(new FileReader(new File("D:\\calculate.txt")));
+        String line = null;
+        while((line = bufferedReader.readLine()) != null) {
+        	Thread.sleep(1000);
+        	Client.sendMsg(line);
+        }
+//        Scanner scanner = new Scanner(System.in);  
+//        while(Client.sendMsg(scanner.nextLine()));  
     }  
 }  

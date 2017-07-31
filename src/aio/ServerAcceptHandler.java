@@ -4,7 +4,7 @@ import java.nio.ByteBuffer;
 import java.nio.channels.AsynchronousSocketChannel;  
 import java.nio.channels.CompletionHandler;  
 //作为handler接收客户端连接  
-public class AcceptHandler implements CompletionHandler<AsynchronousSocketChannel, AsyncServerHandler> {  
+public class ServerAcceptHandler implements CompletionHandler<AsynchronousSocketChannel, AsyncServerHandler> {  
     @Override  
     public void completed(AsynchronousSocketChannel channel,AsyncServerHandler serverHandler) {  
         //继续接受其他客户端的请求  

@@ -5,10 +5,10 @@ import java.nio.ByteBuffer;
 import java.nio.channels.AsynchronousSocketChannel;  
 import java.nio.channels.CompletionHandler;  
 import java.util.concurrent.CountDownLatch;  
-public class WriteHandler implements CompletionHandler<Integer, ByteBuffer> {  
+public class ClientWriteHandler implements CompletionHandler<Integer, ByteBuffer> {  
     private AsynchronousSocketChannel clientChannel;  
     private CountDownLatch latch;  
-    public WriteHandler(AsynchronousSocketChannel clientChannel,CountDownLatch latch) {  
+    public ClientWriteHandler(AsynchronousSocketChannel clientChannel,CountDownLatch latch) {  
         this.clientChannel = clientChannel;  
         this.latch = latch;  
     }  
@@ -21,7 +21,7 @@ public class WriteHandler implements CompletionHandler<Integer, ByteBuffer> {
         else {  
             //读取数据  
             ByteBuffer readBuffer = ByteBuffer.allocate(1024);  
-            clientChannel.read(readBuffer,readBuffer,new ClientReadHandler(clientChannel, latch));  
+            clientChannel.read(readBuffer,readBuffer,new ClientReadHandler(clientChannel, latch)); 
         }  
     }  
     @Override  
